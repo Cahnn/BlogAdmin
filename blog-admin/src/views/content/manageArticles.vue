@@ -49,22 +49,26 @@
             }
         },
         methods: {
+            // 查看文章
             handleClick(index, item) {
                 // console.log(row);
                 this.$router.push({ path: '/BlogContent', query: {_id:item._id} })
             },
+            // 获取所有文章
             findArti(){
                 this.$http.post('/api/'+this.apiModel+'/find', this.arti).then(res => {
                     console.log('res:', res)
                     this.arti = res
                 })
             },
+            // 删除文章
             handleDelete(index, item) {
                 this.$http.post('/api/'+this.apiModel+'/delete', item).then(res => {
                     console.log('res:', res)
                     this.findArti()
                 })
             },
+            // 编辑文章
             handleEdit(index, item) {
                 this.$router.push({ path: '/postArticle', query: {_id:item._id} })
             },
